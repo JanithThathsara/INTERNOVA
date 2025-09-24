@@ -16,6 +16,15 @@ app.use(cors({
 // Routes
 app.use("/jobs", router);
 
+//company register
+
+// Middleware
+app.use(express.json());
+app.use(cors()); // allow frontend to connect
+
+// Base route
+app.use("/users", router);
+
 // MongoDB Connection
 const MONGO_URI = "mongodb+srv://admin:qLRpJ8YgncmgMohc@cluster0.bfcdsec.mongodb.net/jobdb?retryWrites=true&w=majority";
 

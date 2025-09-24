@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -52,7 +53,7 @@ export default function Home() {
             <h2>Choose Your Role</h2>
             <p>Select how you want to continue:</p>
             <div className="popup-buttons">
-              <button onClick={() => handleChoice('/company')}>Company</button>
+            <Link to="/CompanyRegister" > <button onClick={() => handleChoice('/company')}>Company</button></Link>
               <button onClick={() => handleChoice('/employer')}>Employer</button>
             </div>
             <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
