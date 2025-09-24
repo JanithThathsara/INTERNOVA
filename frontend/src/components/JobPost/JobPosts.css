@@ -1,0 +1,163 @@
+/* ====== Job Posts Section Header ====== */
+.jobposts-header {
+  text-align: center;
+  margin: 50px 0 40px 0; /* top + bottom spacing */
+  padding: 10px;
+}
+
+.jobposts-header h1 {
+  font-size: 2.5rem;       /* bigger title */
+  font-weight: 700;
+  color: #2c1e35;
+  margin-bottom: 12px;
+}
+
+.jobposts-header p {
+  font-size: 1.1rem;
+  color: #5b4760;
+  max-width: 600px;        /* keep paragraph readable */
+  margin: 0 auto;          /* center align */
+  line-height: 1.6;
+}
+
+/* ====== Job Cards Container ====== */
+.job-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 25px;
+  padding: 30px;
+}
+
+@media (max-width: 1024px) {
+  .job-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .job-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== Job Card ====== */
+.job-card {
+  background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* ====== Header with logo ====== */
+.job-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.job-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #2c1e35;
+}
+
+.job-header .company {
+  font-size: 1rem;
+  color: #5b4760;
+}
+
+/* ====== Details ====== */
+.job-details {
+  margin-bottom: 15px;
+}
+
+.job-details p {
+  font-size: 0.95rem;
+  color: #4a3b4f;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ====== Apply Button ====== */
+.apply-btn {
+  margin-top: auto;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b5e86, #ad91a3);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.apply-btn:hover {
+  background: linear-gradient(135deg, #5a3e63, #9d7c9e);
+  transform: scale(1.05);
+}
+
+/* ====== Update & Delete Buttons ====== */
+.job-actions {
+  display: flex;
+  justify-content: space-between; /* left + right */
+  margin-top: 15px;
+}
+
+.job-actions button {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.job-actions button:first-child {
+  margin-right: 10px;
+  background: #4caf50;   /* green for update */
+  color: white;
+}
+
+.job-actions button:first-child:hover {
+  background: #43a047;
+}
+
+.job-actions button:last-child {
+  background: #e53935;   /* red for delete */
+  color: white;
+}
+
+.job-actions button:last-child:hover {
+  background: #c62828;
+}
+
+/* ====== Footer ====== */
+.jobposts-footer {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 0.9rem;
+  color: #5b4760;
+}

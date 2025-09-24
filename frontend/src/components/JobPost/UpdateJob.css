@@ -1,0 +1,81 @@
+/* ====== Update Job Modal ====== */
+.modal {
+  max-width: 600px;
+  margin: 60px auto;
+  background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.modal h2 {
+  font-size: 2rem;
+  color: #2c1e35;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* ====== Form Styling ====== */
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.25s ease;
+}
+
+.modal input:focus {
+  border-color: #7b5e86;
+}
+
+/* ====== Buttons ====== */
+.modal button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal button[type="submit"] {
+  background: linear-gradient(135deg, #7b5e86, #ad91a3); /* same as Apply button */
+  color: #fff;
+}
+
+.modal button[type="submit"]:hover {
+  background: linear-gradient(135deg, #5a3e63, #9d7c9e);
+  transform: scale(1.05);
+}
+
+.modal button[type="button"] {
+  background: #e53935; /* red for cancel */
+  color: #fff;
+}
+
+.modal button[type="button"]:hover {
+  background: #c62828;
+  transform: scale(1.05);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .modal {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .modal h2 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,51 @@
+.nav-container {
+  width: 100%;
+  padding: 25px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.nav-left h1 {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ad91a3;
+  margin: 0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-right a {
+  padding-right: 30px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-right a:hover {
+  color: #ad91a3;
+}
+
+.profile-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ad91a3;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
