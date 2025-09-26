@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CompanyUpdate.css";
+import Nav from "../Nav/Nav";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CompanyUpdate = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     companyName: "",
     companyRegisterNumber: "",
@@ -15,9 +17,10 @@ const CompanyUpdate = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/users/${id}`)
-      .then(res => setFormData(res.data))
-      .catch(err => console.error(err));
+    axios
+      .get(`http://localhost:5000/users/${id}`) // change to /companies/${id} if needed
+      .then((res) => setFormData(res.data))
+      .catch((err) => console.error(err));
   }, [id]);
 
   const handleChange = (e) => {
@@ -27,8 +30,8 @@ const CompanyUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/users/${id}`, formData);
-      alert("Company Updated Successfully!");
+      await axios.put(`http://localhost:5000/users/${id}`, formData); // adjust endpoint if needed
+      alert("Company updated successfully!");
       navigate(`/Details/${id}`);
     } catch (err) {
       console.error(err);
@@ -37,36 +40,72 @@ const CompanyUpdate = () => {
   };
 
   return (
-    <div className="update-page">
-      <div className="update-container">
-        <h2>Update Company</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Company Name</label>
-          <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required />
-
-          <label>Registration Number</label>
-          <input type="text" name="companyRegisterNumber" value={formData.companyRegisterNumber} onChange={handleChange} required />
-
-          <label>Address</label>
-          <textarea name="companyAddress" value={formData.companyAddress} onChange={handleChange} required />
-
-          <label>Phone</label>
-          <input type="tel" name="companyPhone" value={formData.companyPhone} onChange={handleChange} required />
-
-          <label>Category</label>
-          <select name="companyCategory" value={formData.companyCategory} onChange={handleChange} required>
-            <option value="">Select Category</option>
-            <option value="IT">IT</option>
-            <option value="Finance">Finance</option>
-           <option value="Software">Software Development</option>
-            <option value="Marketing">Marketing & Advertising</option>
-            <option value="Other">Other</option>
-          </select>
-
-          <button type="submit" className="save-btn">Save Changes</button>
-        </form>
+    <>
+      <div className="nav-div">
+        <Nav />
       </div>
-    </div>
+
+      <div className="update-page">
+        <div className="update-container">
+          <h2>Update Company</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Company Name</label>
+            <input
+              type="text"
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Registration Number</label>
+            <input
+              type="text"
+              name="companyRegisterNumber"
+              value={formData.companyRegisterNumber}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Address</label>
+            <textarea
+              name="companyAddress"
+              value={formData.companyAddress}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Phone</label>
+            <input
+              type="tel"
+              name="companyPhone"
+              value={formData.companyPhone}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Category</label>
+            <select
+              name="companyCategory"
+              value={formData.companyCategory}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Category</option>
+              <option value="IT">IT</option>
+              <option value="Finance">Finance</option>
+              <option value="Software Development">Software Development</option>
+              <option value="Marketing">Marketing & Advertising</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <button type="submit" className="submit-btn">
+              Save Company
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 

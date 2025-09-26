@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, #fdfbfb 0%, #ebedee 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
   font-family: "Segoe UI", Arial, sans-serif;
   padding: 20px;
 }
