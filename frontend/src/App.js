@@ -34,7 +34,7 @@ function App() {
         <Route path="/Details/:id" element={<CompanyDetailsPage />} />
         <Route path="/CompanyUpdate/:id" element={<CompanyUpdatePage />} />
           {/* Application Routes */}
-        <Route path="/" element={<JobApplication />} />
+        <Route path="/newApplication" element={<JobApplication />} />
         <Route path="/applications" element={<ApplicationList />} />
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="*" element={<Navigate to="/" replace />} />

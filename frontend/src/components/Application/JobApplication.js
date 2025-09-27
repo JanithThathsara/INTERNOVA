@@ -79,6 +79,28 @@ export default function JobApplication() {
       }
     }
 
+    if (step === 3) {
+      // CV validation (must upload & must be correct format)
+      if (!formData.cv) {
+        newErrors.cv = "CV upload is required";
+      } else {
+        const allowedCV = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+        if (!allowedCV.includes(formData.cv.type)) {
+          newErrors.cv = "CV must be a PDF, DOC, or DOCX file";
+        }
+      }
+
+      // Certification validation (optional but must be valid format if uploaded)
+      if (formData.certifications && formData.certifications.length > 0) {
+        const allowedCerts = ["application/pdf", "image/jpeg", "image/png"];
+        formData.certifications.forEach((file, idx) => {
+          if (!allowedCerts.includes(file.type)) {
+            newErrors.certifications = "Certificates must be PDF, JPG, or PNG";
+          }
+        });
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -291,6 +313,9 @@ export default function JobApplication() {
                 accept=".pdf,.jpg,.png"
                 multiple
               />
+              {errors.certifications && (
+                <div className="error">{errors.certifications}</div>
+              )}
 
               <label>Upload CV</label>
               <input
@@ -299,6 +324,7 @@ export default function JobApplication() {
                 onChange={handleChange}
                 accept=".pdf,.doc,.docx"
               />
+              {errors.cv && <div className="error">{errors.cv}</div>}
 
               <div className="form-buttons">
                 <button type="button" onClick={prevStep}>

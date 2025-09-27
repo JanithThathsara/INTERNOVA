@@ -67,7 +67,7 @@ export default function ApplicationList() {
         <h2>Submitted Applications</h2>
         <div className="list-actions">
           <button onClick={generatePDF}>Download PDF</button>
-          <button onClick={() => navigate("/")}>New Application</button>
+          <button onClick={() => navigate("/newApplication")}>New Application</button>
         </div>
       </div>
 

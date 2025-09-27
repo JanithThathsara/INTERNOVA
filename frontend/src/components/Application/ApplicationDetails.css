@@ -4,7 +4,7 @@
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #f7f8fa;
+   background: linear-gradient(135deg, #7b5e86, #c3acbb);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -18,7 +18,7 @@
 }
 
 .details-section {
-  background-color: #fff;
+   background: linear-gradient(135deg, #7b5e86, #ad91a3);;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;

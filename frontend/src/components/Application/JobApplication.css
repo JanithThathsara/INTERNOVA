@@ -3,13 +3,13 @@
   justify-content: center;
   padding: 40px 20px;
   min-height: 100vh;
-  background: #f4f6f9;
+ background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
 }
 
 .multi-form-container {
   width: 100%;
   max-width: 700px;
-  background: #fff;
+   background: linear-gradient(135deg, #7b5e86, #ad91a3);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
@@ -18,7 +18,7 @@
 .multi-form-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #6b0763ad;
+  color: #333;
 }
 
 .multi-form-container label {
@@ -49,13 +49,13 @@
   border-radius: 8px;
   border: none;
   font-weight: bold;
-  background: #6b0763ad;
+  background:#333;
   color: #fff;
   cursor: pointer;
 }
 
 .form-buttons button:hover {
-  background: #6b0763ad;
+  background:#333;
 }
 
 .error {
