@@ -18,7 +18,7 @@
 }
 
 .details-section {
-   background: linear-gradient(135deg, #7b5e86, #ad91a3);;
+   background: linear-gradient(135deg, #dec4e9, #f0c1e0);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -33,7 +33,7 @@
 }
 
 .details-section a {
-  color: #3498db;
+  color: #052db3;
   text-decoration: none;
 }
 
@@ -42,7 +42,8 @@
 }
 
 .update-section {
-  background-color: #fff;
+  /*background-color: #fff;*/
+  background: linear-gradient(135deg, #dec4e9, #f0c1e0);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);

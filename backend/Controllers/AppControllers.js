@@ -33,7 +33,7 @@ const addApplications = async (req, res) => {
       birth: req.body.birth,
       gender: req.body.gender || "",
       education: req.body.education || "",
-      jobCategory: req.body.jobCategory || "",
+      joblookingfor: req.body. joblookingfor || "",
       experiences: req.body.experiences || "",
       years: req.body.years ? Number(req.body.years) : 0,
     };
@@ -80,7 +80,6 @@ const updateApplication = async (req, res) => {
   const {
     firstName,
     lastName,
-    middle,
     address,
     city,
     phone,
@@ -88,7 +87,7 @@ const updateApplication = async (req, res) => {
     birth,
     gender,
     education,
-    jobCategory,
+    joblookingfor,
     experiences,
     years,
   } = req.body;
@@ -106,7 +105,7 @@ const updateApplication = async (req, res) => {
         birth,
         gender,
         education,
-        jobCategory,
+        joblookingfor,
         experiences,
         years,
       },
