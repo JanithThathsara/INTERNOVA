@@ -74,7 +74,24 @@ const deleteUser = async (req, res) => {
     return res.status(400).json({ message: "Unable to delete user" });
   }
 };
+// Add login
+const loginUser = async (req, res) => {
+  const { companyName, companyRegisterNumber } = req.body;
 
+  try {
+    const user = await User.findOne({ companyName, companyRegisterNumber });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    return res.status(200).json(user); // return user data
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.loginUser = loginUser;
 exports.getAllUsers = getAllUsers;
 exports.addUsers = addUsers;
 exports.getById = getById;
