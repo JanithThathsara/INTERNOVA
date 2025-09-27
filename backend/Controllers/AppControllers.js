@@ -14,14 +14,10 @@ const getAllApplications = async (req, res) => {
   }
 };
 
-/**
- * POST /api/applications
- * Accepts multipart/form-data when files are present (handled in routes with multer)
- */
+// POST /api/applications   (create)
 const addApplications = async (req, res) => {
   try {
-    // If request was multipart (files), multer will put files on req.files
-    // and text fields will be in req.body.
+
     const data = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -55,9 +51,8 @@ const addApplications = async (req, res) => {
   }
 };
 
-/**
- * GET /api/applications/:id
- */
+//GET /api/applications/:id  (read )
+ 
 const getById = async (req, res) => {
   const id = req.params.id;
   try {
@@ -70,11 +65,8 @@ const getById = async (req, res) => {
   }
 };
 
-/**
- * PUT /api/applications/:id
- * NOTE: This route updates application details (if used). Per assignment, users should NOT update personal details themselves;
- * in the UI we only call the files route to update CV/certifications. This route is provided for completeness/admin use.
- */
+// PUT /api/applications/:id (update)
+ 
 const updateApplication = async (req, res) => {
   const id = req.params.id;
   const {
@@ -120,9 +112,8 @@ const updateApplication = async (req, res) => {
   }
 };
 
-/**
- * DELETE /api/applications/:id
- */
+//DELETE /api/applications/:id  (delete )
+
 const deleteApplication = async (req, res) => {
   const id = req.params.id;
   try {

@@ -29,38 +29,40 @@ export default function ApplicationDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //  Handle update
   const handleUpdate = async () => {
-    if (!cvFile && certFiles.length === 0) {
-      alert("Select CV or certifications to update.");
-      return;
+  if (!cvFile && certFiles.length === 0) {
+    alert("Select CV or certifications to update.");
+    return;
+  }
+
+  setSubmitting(true);
+  try {
+    const fd = new FormData();
+    if (cvFile) fd.append("cv", cvFile);
+    if (certFiles.length)
+      certFiles.forEach((file) => fd.append("certifications", file));
+
+    // FIX: use /files route
+    const res = await fetch(`${API_ROOT}/api/applications/${id}/files`, {
+      method: "PUT",
+      body: fd,
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || "Update failed");
     }
 
-    setSubmitting(true);
-    try {
-      const fd = new FormData();
-      if (cvFile) fd.append("cv", cvFile);
-      if (certFiles.length)
-        certFiles.forEach((file) => fd.append("certifications", file));
-
-      const res = await fetch(`${API_ROOT}/api/applications/${id}`, {
-        method: "PUT",
-        body: fd,
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || "Update failed");
-      }
-
-      alert("Application updated successfully!");
-      fetchApplication(); // refresh details
-    } catch (err) {
-      console.error(err);
-      alert("Update failed. See console.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
+    alert("Application updated successfully!");
+    fetchApplication(); // refresh details
+  } catch (err) {
+    console.error(err);
+    alert("Update failed. See console.");
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this application?")) return;
@@ -95,7 +97,7 @@ export default function ApplicationDetails() {
             <p><strong>City:</strong> {application.city}</p>
             <p><strong>Gender:</strong> {application.gender}</p>
             <p><strong>Education:</strong> {application.education}</p>
-            <p><strong>Job Category:</strong> {application.jobCategory}</p>
+            <p><strong>Looking For:</strong> {application.joblookingfor}</p>
             <p><strong>Experiences:</strong> {application.experiences}</p>
             <p><strong>Years of Experience:</strong> {application.years}</p>
             <p>

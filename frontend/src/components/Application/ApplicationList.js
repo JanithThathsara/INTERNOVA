@@ -50,7 +50,7 @@ export default function ApplicationList() {
     doc.text("Submitted Applications Report", 14, 15);
 
     filtered.forEach((app, i) => {
-      const line = `${i + 1}. ${app.firstName} ${app.lastName} — ${app.email} — ${app.city || "-"} — ${app.jobCategory || "-"}`;
+      const line = `${i + 1}. ${app.firstName} ${app.lastName} — ${app.email} — ${app.city || "-"} — ${app.joblookingfor || "-"}`;
       doc.text(line, 14, y);
       y += 8;
       if (y > 280) {
@@ -87,7 +87,7 @@ export default function ApplicationList() {
                 <th>Name</th>
                 <th>City</th>
                 <th>Email</th>
-                <th>Category</th>
+                <th>Looking For</th>
                 <th>Years</th>
                 <th>Submitted</th>
                 <th>Action</th>
@@ -99,7 +99,7 @@ export default function ApplicationList() {
                   <td>{app.firstName} {app.lastName}</td>
                   <td>{app.city || "-"}</td>
                   <td>{app.email || "-"}</td>
-                  <td>{app.jobCategory || "-"}</td>
+                  <td>{app.joblookingfor || "-"}</td>
                   <td>{app.years ?? "-"}</td>
                   <td>{app.createdAt ? new Date(app.createdAt).toLocaleDateString() : "-"}</td>
                   <td><button onClick={() => handleView(app._id)}>View</button></td>

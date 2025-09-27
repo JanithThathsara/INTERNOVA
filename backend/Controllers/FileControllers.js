@@ -23,10 +23,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-/**
- * Handle update of files (cv and certifications) for an application.
- * Route: PUT /api/applications/:id/files
- */
+//update of files (cv and certifications) 
+//Route: PUT /api/applications/:id/files
+ 
 const updateFiles = async (req, res) => {
   const id = req.params.id;
 

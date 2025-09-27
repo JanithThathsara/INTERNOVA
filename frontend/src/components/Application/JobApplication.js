@@ -17,7 +17,7 @@ export default function JobApplication() {
     email: "",
     birth: "",
     education: "",
-    jobCategory: "",
+    joblookingfor: "",
     experiences: "",
     years: "",
     certifications: [],
@@ -129,7 +129,7 @@ export default function JobApplication() {
         "email",
         "birth",
         "education",
-        "jobCategory",
+        "joblookingfor",
         "experiences",
         "years",
       ];

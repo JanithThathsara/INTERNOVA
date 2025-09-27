@@ -33,8 +33,8 @@ const MONGO_URI = "mongodb+srv://admin:qLRpJ8YgncmgMohc@cluster0.bfcdsec.mongodb
 
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("✅ Connected to MongoDB");
+    console.log(" Connected to MongoDB");
     const port = 5000; // fixed port
     app.listen(port, () => console.log(`🚀 Server running at http://localhost:${port}`));
   })
-  .catch(err => console.error("❌ MongoDB connection error:", err));
+  .catch(err => console.error(" MongoDB connection error:", err));
