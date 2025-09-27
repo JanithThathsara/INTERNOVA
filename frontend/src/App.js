@@ -12,6 +12,12 @@ import CompanyRegisterPage from './components/CompanyhomePage/CompanyHome';
 import CompanyDetailsPage from './components/CompanyDetailPage/CompanyDetails';
 import CompanyUpdatePage from './components/CompanyUpdatePage/CompanyUpdate';
 
+// Application Components
+import JobApplication from './components/Application/JobApplication';
+import ApplicationList from './components/Application/ApplicationList';
+import ApplicationDetails from './components/Application/ApplicationDetails';
+import { Navigate } from "react-router-dom";
+
 function App() {
 
   return (
@@ -27,6 +33,12 @@ function App() {
         <Route path="/CompanyRegister" element={<CompanyRegisterPage />} />
         <Route path="/Details/:id" element={<CompanyDetailsPage />} />
         <Route path="/CompanyUpdate/:id" element={<CompanyUpdatePage />} />
+          {/* Application Routes */}
+        <Route path="/" element={<JobApplication />} />
+        <Route path="/applications" element={<ApplicationList />} />
+        <Route path="/applications/:id" element={<ApplicationDetails />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/apply" element={<JobApplication />} />
         </Routes>
       </React.Fragment>
 

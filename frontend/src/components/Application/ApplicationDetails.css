@@ -1,0 +1,136 @@
+/* ApplicationDetails.css */
+
+.application-details-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f8fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.application-details-page h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.details-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.details-section p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.details-section a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.details-section a:hover {
+  text-decoration: underline;
+}
+
+.update-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.update-section h3 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.update-section label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.update-section input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.details-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.details-buttons button {
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  background-color: #6b0763ad;
+  color: #fff;
+}
+
+.details-buttons button:hover {
+  background-color: #6b0763ad;
+}
+
+.details-buttons .delete-btn {
+  background-color: #c00c1bd1;
+}
+
+.details-buttons .delete-btn:hover {
+  background-color: #c00c1bd1;
+}
+
+.details-buttons .back-btn {
+  background-color: #086e75ac;
+}
+
+.details-buttons .back-btn:hover {
+  background-color: #7f8c8d;
+}
+
+/* Scrollbar styling for details section */
+.details-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.details-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.details-section::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.details-section::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .application-details-page {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .details-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

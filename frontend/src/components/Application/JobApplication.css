@@ -1,0 +1,65 @@
+.jobapp-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.multi-form-container {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+}
+
+.multi-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6b0763ad;
+}
+
+.multi-form-container label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.multi-form-container input,
+.multi-form-container select,
+.multi-form-container textarea {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  background: #6b0763ad;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-buttons button:hover {
+  background: #6b0763ad;
+}
+
+.error {
+  color: #e53935;
+  font-size: 14px;
+  margin-top: 4px;
+}

@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav';
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // <-- fixed import
+import { Link } from "react-router-dom";
 
 function JobPosts() {
   const [jobs, setJobs] = useState([]);
@@ -124,7 +125,9 @@ function JobPosts() {
                 <p>💰 ${job.salary}</p>
                 <p>🕑 {job.experience}</p>
               </div>
+              <Link to="/apply">
               <button className="apply-btn">Apply Now</button>
+              </Link>
               <div className="job-actions">
                 <button onClick={() => handleUpdate(job._id)}>✏️ Update</button>
                 <button onClick={() => handleDelete(job._id)}>🗑️ Delete</button>
