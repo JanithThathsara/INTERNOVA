@@ -80,7 +80,7 @@ export default function JobApplication() {
     }
 
     if (step === 3) {
-      // CV validation (must upload & must be correct format)
+      // CV validation 
       if (!formData.cv) {
         newErrors.cv = "CV upload is required";
       } else {
@@ -90,7 +90,7 @@ export default function JobApplication() {
         }
       }
 
-      // Certification validation (optional but must be valid format if uploaded)
+      // Certification validation 
       if (formData.certifications && formData.certifications.length > 0) {
         const allowedCerts = ["application/pdf", "image/jpeg", "image/png"];
         formData.certifications.forEach((file, idx) => {
@@ -166,6 +166,7 @@ export default function JobApplication() {
       <div className="multi-form-container">
         <h2>Job Application Form</h2>
         <form onSubmit={handleSubmit}>
+          
           {/* STEP 1: Personal & Contact */}
           {step === 1 && (
             <>
