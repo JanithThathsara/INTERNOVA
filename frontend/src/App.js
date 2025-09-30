@@ -14,7 +14,7 @@ import UpdateJob from "./components/JobPost/UpdateJob";
 import CompanyRegisterPage from "./components/CompanyhomePage/CompanyHome";
 import CompanyDetailsPage from "./components/CompanyDetailPage/CompanyDetails";
 import CompanyUpdatePage from "./components/CompanyUpdatePage/CompanyUpdate";
-import CompanyLogin from "./components/CompanyLogin/CompanyLogin";  // ✅ FIXED
+import CompanyLogin from "./components/CompanyLogin/CompanyLogin";  // 
 
 // Applications
 import JobApplication from "./components/Application/JobApplication";
@@ -46,7 +46,7 @@ function App() {
         <Route path="/apply" element={<JobApplication />} />
 
         {/* Auth Route */}
-        <Route path="/login" element={<CompanyLogin />} /> {/* ✅ FIXED */}
+        <Route path="/login" element={<CompanyLogin />} /> 
 
         {/* Catch All → Redirect to Home */}
         <Route path="*" element={<Navigate to="/" replace />} />
