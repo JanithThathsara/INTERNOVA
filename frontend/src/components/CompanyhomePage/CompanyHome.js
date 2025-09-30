@@ -12,6 +12,7 @@ const CompanyHome = () => {
     companyAddress: "",
     companyPhone: "",
     companyCategory: "",
+    companyEmail: "",
   });
 
   const handleChange = (e) => {
@@ -22,8 +23,8 @@ const CompanyHome = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5000/users", formData);
-      alert("Company Registered Successfully!");
-      navigate(`/Details/${res.data._id}`);
+      alert("OTP sent to your email!");
+      navigate(`/verify-otp/${res.data.userId}`);
     } catch (err) {
       console.error(err);
       alert("Error registering company!");
@@ -90,12 +91,18 @@ const CompanyHome = () => {
               <option value="Other">Other</option>
             </select>
 
-            {/* Save Company Button */}
+            <label>Company Email</label>
+            <input
+              type="email"
+              name="companyEmail"
+              value={formData.companyEmail}
+              onChange={handleChange}
+              required
+            />
+
             <button type="submit" className="submit-btn">
               Save Company
             </button>
-
-            {/* New Login Button */}
             <button
               type="button"
               className="login-btn"

@@ -14,23 +14,28 @@ import UpdateJob from "./components/JobPost/UpdateJob";
 import CompanyRegisterPage from "./components/CompanyhomePage/CompanyHome";
 import CompanyDetailsPage from "./components/CompanyDetailPage/CompanyDetails";
 import CompanyUpdatePage from "./components/CompanyUpdatePage/CompanyUpdate";
-import CompanyLogin from "./components/CompanyLogin/CompanyLogin";  // 
+import CompanyLogin from "./components/CompanyLogin/CompanyLogin";
+// OTP Verify
+import OTPVerify from "./components/OTPVerify/OTPVerify";
+
 
 // Applications
 import JobApplication from "./components/Application/JobApplication";
 import ApplicationList from "./components/Application/ApplicationList";
 import ApplicationDetails from "./components/Application/ApplicationDetails";
 
+<<<<<<< HEAD
 //reviews page import
 import CompanyReviews from "./components/CompanyReviews/CompanyReviews";
 
+=======
+>>>>>>> 921e44ed8c6a4cfd1ce37350318fa9144096ab21
 
 
 function App() {
   return (
     <div>
       <Routes>
-        {/* Home */}
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
 
@@ -50,13 +55,18 @@ function App() {
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
 
+<<<<<<< HEAD
         {/*reviews page route*/}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 
         {/* Auth Route */}
         <Route path="/login" element={<CompanyLogin />} /> 
+=======
+        {/* Auth */}
+        <Route path="/login" element={<CompanyLogin />} />
+        <Route path="/verify-otp/:userId" element={<OTPVerify />} />
+>>>>>>> 921e44ed8c6a4cfd1ce37350318fa9144096ab21
 
-        {/* Catch All → Redirect to Home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

@@ -1,0 +1,88 @@
+/* Container */
+.otp-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f8ff 0%, #d6c2de 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  flex-direction: column;
+}
+
+/* Card */
+.otp-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Title */
+.otp-title {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #4a2c5f;
+}
+
+/* OTP input */
+.otp-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  letter-spacing: 8px; /* ✅ digits separated look */
+  outline: none;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+  border-color: #6a1b9a;
+  box-shadow: 0 0 8px rgba(106, 27, 154, 0.3);
+}
+
+/* Button */
+.otp-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.otp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Error text */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
