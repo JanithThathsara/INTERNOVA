@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema(
     companyAddress: { type: String, required: true, trim: true },
     companyPhone: { type: String, required: true, trim: true },
     companyCategory: { type: String, required: true, trim: true },
+    companyEmail: { type: String, required: true, trim: true, unique: true },
+    otp: { type: String },              // 🔹 OTP field
+    isVerified: { type: Boolean, default: false }, // 🔹 verification status
   },
   { timestamps: true }
 );

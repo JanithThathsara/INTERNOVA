@@ -1,17 +1,23 @@
-import React from 'react';
-import './Nav.css';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import "./Nav.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
+
   const handleProfileClick = () => {
-    const user = JSON.parse(localStorage.getItem("loggedUser"));
     if (user) {
       navigate(`/Details/${user._id}`);
     } else {
       navigate("/login");
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedUser");
+    navigate("/");
   };
 
   return (
@@ -25,6 +31,7 @@ export default function Nav() {
         <Link to="/notices">Notices</Link>
         <Link to="/company-reviews">Company Reviews</Link>
         <button className="profile-btn" onClick={handleProfileClick}>P</button>
+        {user && <button className="logout-btn" onClick={handleLogout}>Logout</button>}
       </div>
     </nav>
   );
