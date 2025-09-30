@@ -7,6 +7,7 @@ const path = require("path");
 // Import Routers
 const jobRouter = require("./Routes/JobRoutes");
 const userRouter = require("./Routes/UserRoute");
+const reviewRoutes = require("./Routes/ReviewRoutes");
 const applicationRouter = require("./Routes/AppRoutes"); // applications CRUD
 
 const app = express();
@@ -22,7 +23,8 @@ app.use(express.urlencoded({ extended: true })); // Parse form data
 
 // Routes
 app.use("/jobs", jobRouter);                     // Job CRUD
-app.use("/users", userRouter);                   // Company/User CRUD
+app.use("/users", userRouter); 
+app.use("/reviews", reviewRoutes);                 // Company/User CRUD
 app.use("/api/applications", applicationRouter); // Applications CRUD
 
 // Serve uploaded files

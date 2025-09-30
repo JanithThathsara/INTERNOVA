@@ -21,6 +21,11 @@ import JobApplication from "./components/Application/JobApplication";
 import ApplicationList from "./components/Application/ApplicationList";
 import ApplicationDetails from "./components/Application/ApplicationDetails";
 
+//reviews page import
+import CompanyReviews from "./components/CompanyReviews/CompanyReviews";
+
+
+
 function App() {
   return (
     <div>
@@ -44,6 +49,9 @@ function App() {
         <Route path="/applications" element={<ApplicationList />} />
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
+
+        {/*reviews page route*/}
+        <Route path="/company-reviews" element={<CompanyReviews />} />
 
         {/* Auth Route */}
         <Route path="/login" element={<CompanyLogin />} /> 

@@ -1,0 +1,135 @@
+.page {
+  padding: 40px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: #f9f9fb;
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.6s ease;
+}
+
+.page-header h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #2c1e35;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: #5b4760;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+  animation: fadeIn 0.7s ease;
+}
+
+.company-card {
+  background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.company-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #2c1e35;
+}
+
+.rating {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+  background: rgba(255,255,255,0.6);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.address {
+  color: #374151;
+  font-size: 0.92rem;
+  margin-top: 8px;
+}
+
+.card-meta {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* Overlay (modal) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.detail-panel {
+  width: min(600px, 98%);
+  background: #fff;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 20px 50px rgba(2,6,23,0.5);
+  animation: scaleIn 0.35s ease;
+}
+
+.close-btn {
+  float: right;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
