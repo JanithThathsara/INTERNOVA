@@ -72,7 +72,11 @@ export default function ApplicationList() {
       </div>
 
       <div className="list-search">
-        <input placeholder="Search by name, email or city..." value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input
+          placeholder="Search by name, email or city..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
 
       <div className="list-scroll">
@@ -102,7 +106,9 @@ export default function ApplicationList() {
                   <td>{app.joblookingfor || "-"}</td>
                   <td>{app.years ?? "-"}</td>
                   <td>{app.createdAt ? new Date(app.createdAt).toLocaleDateString() : "-"}</td>
-                  <td><button onClick={() => handleView(app._id)}>View</button></td>
+                  <td>
+                    <button onClick={() => handleView(app._id)}>View</button>
+                  </td>
                 </tr>
               ))}
             </tbody>

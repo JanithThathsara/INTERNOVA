@@ -1,65 +1,151 @@
+/* JobApplication.css */
 .jobapp-page {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   padding: 40px 20px;
   min-height: 100vh;
- background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+  background: linear-gradient(180deg, #fefefe 0%, #d6c1d9 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .multi-form-container {
   width: 100%;
   max-width: 700px;
-   background: linear-gradient(135deg, #7b5e86, #ad91a3);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
 .multi-form-container h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 25px;
+  color: #5a2d5c;
+}
+
+.progress-bar {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  counter-reset: step;
+}
+
+.progress-bar li {
+  list-style-type: none;
+  width: 33%;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.progress-bar li:before {
+  counter-increment: step;
+  content: counter(step);
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: #eee;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  color: #999;
+}
+
+.progress-bar li.active {
+  color: #5a2d5c;
+}
+
+.progress-bar li.active:before {
+  background: #5a2d5c;
+  color: #fff;
+}
+
+.progress-bar li:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #eee;
+  top: 13px;
+  left: -50%;
+  z-index: -1;
+}
+
+.progress-bar li:first-child:after {
+  content: none;
+}
+
+.progress-bar li.active + li:after {
+  background: #5a2d5c;
 }
 
 .multi-form-container label {
   display: block;
   margin-top: 12px;
   font-weight: bold;
+  color: #333;
 }
 
 .multi-form-container input,
 .multi-form-container select,
 .multi-form-container textarea {
-  width: 95%;
-  padding: 10px;
+  width: 100%;
+  padding: 10px 14px;
   margin-top: 5px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.multi-form-container input:focus,
+.multi-form-container select:focus,
+.multi-form-container textarea:focus {
+  border-color: #5a2d5c;
+  box-shadow: 0 0 5px rgba(90, 45, 92, 0.3);
+  outline: none;
+}
+
+textarea {
+  resize: none;
 }
 
 .form-buttons {
-  margin-top: 20px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .form-buttons button {
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 25px;
+  border-radius: 10px;
   border: none;
   font-weight: bold;
-  background:#333;
+  background: #5a2d5c;
   color: #fff;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 10px;
 }
 
 .form-buttons button:hover {
-  background:#333;
+  background: #7a4d7c;
 }
 
 .error {
   color: #e53935;
-  font-size: 14px;
-  margin-top: 4px;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+@media screen and (max-width: 600px) {
+  .form-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

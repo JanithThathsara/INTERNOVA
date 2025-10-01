@@ -41,11 +41,10 @@ export default function JobApplication() {
     }
   };
 
-  // Validation for each step
   const validateStep = () => {
     const newErrors = {};
     const nameRegex = /^[A-Z][a-zA-Z]*$/;
-    const phoneRegex = /^[0-9]{10}$/; // exactly 10 digits
+    const phoneRegex = /^[0-9]{10}$/;
 
     if (step === 1) {
       if (!formData.firstName.trim())
@@ -65,9 +64,7 @@ export default function JobApplication() {
         newErrors.phone = "Phone must be exactly 10 digits";
 
       if (!formData.email.trim()) newErrors.email = "Email is required";
-
       if (!formData.birth.trim()) newErrors.birth = "Date of Birth is required";
-
       if (!formData.address.trim()) newErrors.address = "Address is required";
       if (!formData.city.trim()) newErrors.city = "City is required";
       if (!formData.gender.trim()) newErrors.gender = "Gender is required";
@@ -80,20 +77,22 @@ export default function JobApplication() {
     }
 
     if (step === 3) {
-      // CV validation 
       if (!formData.cv) {
         newErrors.cv = "CV upload is required";
       } else {
-        const allowedCV = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+        const allowedCV = [
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ];
         if (!allowedCV.includes(formData.cv.type)) {
           newErrors.cv = "CV must be a PDF, DOC, or DOCX file";
         }
       }
 
-      // Certification validation 
       if (formData.certifications && formData.certifications.length > 0) {
         const allowedCerts = ["application/pdf", "image/jpeg", "image/png"];
-        formData.certifications.forEach((file, idx) => {
+        formData.certifications.forEach((file) => {
           if (!allowedCerts.includes(file.type)) {
             newErrors.certifications = "Certificates must be PDF, JPG, or PNG";
           }
@@ -165,9 +164,15 @@ export default function JobApplication() {
     <div className="jobapp-page">
       <div className="multi-form-container">
         <h2>Job Application Form</h2>
+
+        <ul className="progress-bar">
+          <li className={step >= 1 ? "active" : ""}>Personal Info</li>
+          <li className={step >= 2 ? "active" : ""}>Professional Info</li>
+          <li className={step >= 3 ? "active" : ""}>Uploads</li>
+        </ul>
+
         <form onSubmit={handleSubmit}>
-          
-          {/* STEP 1: Personal & Contact */}
+          {/* STEP 1 */}
           {step === 1 && (
             <>
               <label>First Name</label>
@@ -176,9 +181,7 @@ export default function JobApplication() {
                 value={formData.firstName}
                 onChange={handleChange}
               />
-              {errors.firstName && (
-                <div className="error">{errors.firstName}</div>
-              )}
+              {errors.firstName && <div className="error">{errors.firstName}</div>}
 
               <label>Last Name</label>
               <input
@@ -186,9 +189,7 @@ export default function JobApplication() {
                 value={formData.lastName}
                 onChange={handleChange}
               />
-              {errors.lastName && (
-                <div className="error">{errors.lastName}</div>
-              )}
+              {errors.lastName && <div className="error">{errors.lastName}</div>}
 
               <label>Phone</label>
               <input
@@ -253,7 +254,7 @@ export default function JobApplication() {
             </>
           )}
 
-          {/* STEP 2: Professional Info */}
+          {/* STEP 2 */}
           {step === 2 && (
             <>
               <label>Education Qualifications</label>
@@ -303,7 +304,7 @@ export default function JobApplication() {
             </>
           )}
 
-          {/* STEP 3: Uploads */}
+          {/* STEP 3 */}
           {step === 3 && (
             <>
               <label>Upload Certifications</label>

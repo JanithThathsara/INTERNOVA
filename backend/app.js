@@ -37,6 +37,6 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log(" Connected to MongoDB");
     const port = 5000; // fixed port
-    app.listen(port, () => console.log(`🚀 Server running at http://localhost:${port}`));
+    app.listen(port, () => console.log(` Server running at http://localhost:${port}`));
   })
   .catch(err => console.error(" MongoDB connection error:", err));

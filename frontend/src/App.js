@@ -24,12 +24,8 @@ import JobApplication from "./components/Application/JobApplication";
 import ApplicationList from "./components/Application/ApplicationList";
 import ApplicationDetails from "./components/Application/ApplicationDetails";
 
-<<<<<<< HEAD
 //reviews page import
 import CompanyReviews from "./components/CompanyReviews/CompanyReviews";
-
-=======
->>>>>>> 921e44ed8c6a4cfd1ce37350318fa9144096ab21
 
 
 function App() {
@@ -55,17 +51,12 @@ function App() {
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
 
-<<<<<<< HEAD
         {/*reviews page route*/}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 
         {/* Auth Route */}
         <Route path="/login" element={<CompanyLogin />} /> 
-=======
-        {/* Auth */}
-        <Route path="/login" element={<CompanyLogin />} />
         <Route path="/verify-otp/:userId" element={<OTPVerify />} />
->>>>>>> 921e44ed8c6a4cfd1ce37350318fa9144096ab21
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
