@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import jsPDF from "jspdf";
 import Nav from "../Nav/Nav";
+import { Link } from "react-router-dom";
 
 const CompanyDetails = () => {
   const { id } = useParams();
@@ -87,6 +88,10 @@ const CompanyDetails = () => {
             <button className="pdf-btn" onClick={handleDownloadPDF}>
               Download PDF
             </button>
+              <Link to="/application-btn">
+                        <button className="application-btn" onClick={handleDownloadPDF}>
+              Update stetus
+            </button></Link>
           </div>
         </div>
       </div>

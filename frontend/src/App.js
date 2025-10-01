@@ -50,7 +50,7 @@ function App() {
         <Route path="/applications" element={<ApplicationList />} />
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
-
+        <Route path="/application-btn" element={<ApplicationDetails />} />
         {/*reviews page route*/}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 

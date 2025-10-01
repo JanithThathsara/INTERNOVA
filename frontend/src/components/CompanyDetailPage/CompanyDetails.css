@@ -68,13 +68,16 @@
 }
 
 .delete-btn {
-  background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+  background: linear-gradient(180deg, #a85148 0%, #bb4538 100%);
 }
 
 .pdf-btn {
-  background: linear-gradient(180deg, #28a745 0%, #218838 100%);
+  background: linear-gradient(180deg, #28a745 0%, #349c4b 100%);
 }
-
+.application-btn {
+  background: linear-gradient(180deg, #301f4e 0%, #7b5e86 100%);
+  
+}
 .no-data {
   color: #666;
   text-align: center;
