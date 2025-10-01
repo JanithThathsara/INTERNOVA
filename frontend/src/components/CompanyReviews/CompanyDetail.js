@@ -11,7 +11,7 @@ export default function CompanyDetail({ company, onClose }) {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/reviews/${company._id}`);
+      const res = await axios.get(`http://localhost:5001/reviews/${company._id}`);
 
       setReviews(res.data);
     } catch (err) {
@@ -22,7 +22,7 @@ export default function CompanyDetail({ company, onClose }) {
   const addReview = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/reviews/${company._id}`, newReview);
+      await axios.post(`http://localhost:5001/reviews/${company._id}`, newReview);
 
       setNewReview({ authorName: "", text: "", rating: 5 });
       fetchReviews();

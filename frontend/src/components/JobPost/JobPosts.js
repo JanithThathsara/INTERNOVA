@@ -20,7 +20,7 @@ function JobPosts() {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/jobs");
+      const res = await axios.get("http://localhost:5001/jobs");
       setJobs(res.data.jobs);
       setLoading(false);
     } catch (err) {
@@ -36,7 +36,7 @@ function JobPosts() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this job?")) {
       try {
-        await axios.delete(`http://localhost:5000/jobs/${id}`);
+        await axios.delete(`http://localhost:5001/jobs/${id}`);
         setJobs(jobs.filter((job) => job._id !== id));
       } catch (err) {
         console.error("Error deleting job:", err);

@@ -18,7 +18,7 @@ const CompanyUpdate = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${id}`) // change to /companies/${id} if needed
+      .get(`http://localhost:5001/users/${id}`) // change to /companies/${id} if needed
       .then((res) => setFormData(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -30,7 +30,7 @@ const CompanyUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/users/${id}`, formData); // adjust endpoint if needed
+      await axios.put(`http://localhost:5001/users/${id}`, formData); // adjust endpoint if needed
       alert("Company updated successfully!");
       navigate(`/Details/${id}`);
     } catch (err) {

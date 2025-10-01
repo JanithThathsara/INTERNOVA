@@ -13,7 +13,7 @@ const OTPVerify = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/users/verify-otp", { userId, otp });
+      const res = await axios.post("http://localhost:5001/users/verify-otp", { userId, otp });
       alert(res.data.message);
       navigate("/login");
     } catch (err) {

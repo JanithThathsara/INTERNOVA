@@ -17,7 +17,7 @@ useEffect(() => {
 const fetchCompanies = async () => {
   try {
     setLoading(true);
-    const res = await axios.get("http://localhost:5000/reviews/companies"); // status 
+    const res = await axios.get("http://localhost:5001/reviews/companies"); // status 
     setCompanies(res.data);
   } catch (err) {
     console.error(err);

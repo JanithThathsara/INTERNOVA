@@ -20,7 +20,7 @@ function UpdateJob() {
   useEffect(() => {
     const fetchJob = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/jobs/${id}`);
+        const res = await axios.get(`http://localhost:5001/jobs/${id}`);
         setJob(res.data);
       } catch (err) {
         console.error("Error fetching job:", err);
@@ -39,7 +39,7 @@ function UpdateJob() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/jobs/${id}`, job);
+      await axios.put(`http://localhost:5001/jobs/${id}`, job);
       alert("✅ Job updated successfully!");
       navigate("/job-posting");
     } catch (err) {

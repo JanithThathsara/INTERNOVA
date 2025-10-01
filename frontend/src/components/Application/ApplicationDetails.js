@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ApplicationDetails.css";
 
-const API_ROOT = "http://localhost:5000";
+const API_ROOT = "http://localhost:5001";
 
 export default function ApplicationDetails() {
   const { id } = useParams();

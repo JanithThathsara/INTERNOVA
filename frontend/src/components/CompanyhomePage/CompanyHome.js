@@ -22,7 +22,7 @@ const CompanyHome = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/users", formData);
+      const res = await axios.post("http://localhost:5001/users", formData);
       alert("OTP sent to your email!");
       navigate(`/verify-otp/${res.data.userId}`);
     } catch (err) {

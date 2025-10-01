@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JobApplication.css";
 
-const API_ROOT = "http://localhost:5000";
+const API_ROOT = "http://localhost:5001";
 
 export default function JobApplication() {
   const navigate = useNavigate();

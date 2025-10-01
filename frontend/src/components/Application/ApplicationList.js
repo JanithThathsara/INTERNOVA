@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "./ApplicationList.css";
 
-const API_ROOT = "http://localhost:5000";
+const API_ROOT = "http://localhost:5001";
 
 export default function ApplicationList() {
   const navigate = useNavigate();

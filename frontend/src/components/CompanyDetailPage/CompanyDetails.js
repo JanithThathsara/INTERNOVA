@@ -13,7 +13,7 @@ const CompanyDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${id}`) // ✅ adjust endpoint later if needed
+      .get(`http://localhost:5001/users/${id}`) // ✅ adjust endpoint later if needed
       .then((res) => setCompany(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -21,7 +21,7 @@ const CompanyDetails = () => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this company?")) {
       try {
-        await axios.delete(`http://localhost:5000/users/${id}`);
+        await axios.delete(`http://localhost:5001/users/${id}`);
         alert("Company deleted successfully!");
         navigate("/");
       } catch (err) {

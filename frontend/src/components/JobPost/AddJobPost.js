@@ -22,7 +22,7 @@ function AddJobPost({ onJobAdded }) {
   const handleAddJob = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/jobs", newJob);
+      const res = await axios.post("http://localhost:5001/jobs", newJob);
       alert("✅ Job added successfully!");
 
       // Update JobPosts state
