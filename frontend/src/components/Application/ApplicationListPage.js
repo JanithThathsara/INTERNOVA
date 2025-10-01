@@ -1,12 +1,18 @@
 import React from "react";
+import Nav from "../Nav/Nav";   // ✅ Import Nav component
 import ApplicationList from "./ApplicationList";
 
 const ApplicationListPage = () => {
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Submitted Applications</h2>
-      <ApplicationList />
-    </div>
+    <>
+      {/* ✅ Nav Bar */}
+      <Nav />
+
+      <div style={{ padding: "20px" }}>
+        <h2>Submitted Applications</h2>
+        <ApplicationList />
+      </div>
+    </>
   );
 };
 

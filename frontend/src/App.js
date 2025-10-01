@@ -15,6 +15,8 @@ import CompanyRegisterPage from "./components/CompanyhomePage/CompanyHome";
 import CompanyDetailsPage from "./components/CompanyDetailPage/CompanyDetails";
 import CompanyUpdatePage from "./components/CompanyUpdatePage/CompanyUpdate";
 import CompanyLogin from "./components/CompanyLogin/CompanyLogin";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+
 // OTP Verify
 import OTPVerify from "./components/OTPVerify/OTPVerify";
 
@@ -44,13 +46,16 @@ function App() {
         <Route path="/CompanyRegister" element={<CompanyRegisterPage />} />
         <Route path="/Details/:id" element={<CompanyDetailsPage />} />
         <Route path="/CompanyUpdate/:id" element={<CompanyUpdatePage />} />
-
+        <Route path="/profile" element={<ProfilePage />} />
+        
         {/* Application Routes */}
         <Route path="/newApplication" element={<JobApplication />} />
         <Route path="/applications" element={<ApplicationList />} />
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
         <Route path="/application-btn" element={<ApplicationDetails />} />
+        
+
         {/*reviews page route*/}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 
@@ -58,7 +63,7 @@ function App() {
         <Route path="/login" element={<CompanyLogin />} /> 
         <Route path="/verify-otp/:userId" element={<OTPVerify />} />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+       
       </Routes>
     </div>
   );

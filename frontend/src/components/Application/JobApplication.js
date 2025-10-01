@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JobApplication.css";
+import Nav from "../Nav/Nav"; // ✅ Import your Nav component
 
 const API_ROOT = "http://localhost:5001";
 
@@ -161,185 +162,210 @@ export default function JobApplication() {
   };
 
   return (
-    <div className="jobapp-page">
-      <div className="multi-form-container">
-        <h2>Job Application Form</h2>
+    <>
+      {/* ✅ Nav bar added here */}
+      <Nav />
 
-        <ul className="progress-bar">
-          <li className={step >= 1 ? "active" : ""}>Personal Info</li>
-          <li className={step >= 2 ? "active" : ""}>Professional Info</li>
-          <li className={step >= 3 ? "active" : ""}>Uploads</li>
-        </ul>
+      <div className="jobapp-page">
+        <div className="multi-form-container">
+          <h2>Job Application Form</h2>
 
-        <form onSubmit={handleSubmit}>
-          {/* STEP 1 */}
-          {step === 1 && (
-            <>
-              <label>First Name</label>
-              <input
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-              {errors.firstName && <div className="error">{errors.firstName}</div>}
+          <ul className="progress-bar">
+            <li className={step >= 1 ? "active" : ""}>Personal Info</li>
+            <li className={step >= 2 ? "active" : ""}>Professional Info</li>
+            <li className={step >= 3 ? "active" : ""}>Uploads</li>
+          </ul>
 
-              <label>Last Name</label>
-              <input
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-              {errors.lastName && <div className="error">{errors.lastName}</div>}
+          <form onSubmit={handleSubmit}>
+            {/* STEP 1 */}
+            {step === 1 && (
+              <>
+                <label>First Name</label>
+                <input
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+                {errors.firstName && (
+                  <div className="error">{errors.firstName}</div>
+                )}
 
-              <label>Phone</label>
-              <input
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-              {errors.phone && <div className="error">{errors.phone}</div>}
+                <label>Last Name</label>
+                <input
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+                {errors.lastName && (
+                  <div className="error">{errors.lastName}</div>
+                )}
 
-              <label>Gender</label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-              >
-                <option value="">-- Select Gender --</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-              {errors.gender && <div className="error">{errors.gender}</div>}
+                <label>Phone</label>
+                <input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+                {errors.phone && (
+                  <div className="error">{errors.phone}</div>
+                )}
 
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              {errors.email && <div className="error">{errors.email}</div>}
+                <label>Gender</label>
+                <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
+                  <option value="">-- Select Gender --</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                {errors.gender && (
+                  <div className="error">{errors.gender}</div>
+                )}
 
-              <label>Address</label>
-              <input
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-              />
-              {errors.address && <div className="error">{errors.address}</div>}
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && (
+                  <div className="error">{errors.email}</div>
+                )}
 
-              <label>City</label>
-              <input
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-              />
-              {errors.city && <div className="error">{errors.city}</div>}
+                <label>Address</label>
+                <input
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                />
+                {errors.address && (
+                  <div className="error">{errors.address}</div>
+                )}
 
-              <label>Date of Birth</label>
-              <input
-                type="date"
-                name="birth"
-                value={formData.birth}
-                onChange={handleChange}
-              />
-              {errors.birth && <div className="error">{errors.birth}</div>}
+                <label>City</label>
+                <input
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                />
+                {errors.city && (
+                  <div className="error">{errors.city}</div>
+                )}
 
-              <div className="form-buttons">
-                <button type="button" onClick={nextStep}>
-                  Next
-                </button>
-              </div>
-            </>
-          )}
+                <label>Date of Birth</label>
+                <input
+                  type="date"
+                  name="birth"
+                  value={formData.birth}
+                  onChange={handleChange}
+                />
+                {errors.birth && (
+                  <div className="error">{errors.birth}</div>
+                )}
 
-          {/* STEP 2 */}
-          {step === 2 && (
-            <>
-              <label>Education Qualifications</label>
-              <input
-                name="education"
-                value={formData.education}
-                onChange={handleChange}
-              />
+                <div className="form-buttons">
+                  <button type="button" onClick={nextStep}>
+                    Next
+                  </button>
+                </div>
+              </>
+            )}
 
-              <label>Job is Looking For</label>
-              <select
-                name="joblookingfor"
-                value={formData.joblookingfor}
-                onChange={handleChange}
-              >
-                <option value="">-- Select Category --</option>
-                <option value="Graduate Student">Graduate Student</option>
-                <option value="Undergraduate Student">Undergraduate Student</option>
-              </select>
+            {/* STEP 2 */}
+            {step === 2 && (
+              <>
+                <label>Education Qualifications</label>
+                <input
+                  name="education"
+                  value={formData.education}
+                  onChange={handleChange}
+                />
 
-              <label>Previous Job Experiences</label>
-              <textarea
-                name="experiences"
-                value={formData.experiences}
-                onChange={handleChange}
-                rows="3"
-              />
+                <label>Job is Looking For</label>
+                <select
+                  name="joblookingfor"
+                  value={formData.joblookingfor}
+                  onChange={handleChange}
+                >
+                  <option value="">-- Select Category --</option>
+                  <option value="Graduate Student">Graduate Student</option>
+                  <option value="Undergraduate Student">
+                    Undergraduate Student
+                  </option>
+                </select>
 
-              <label>Years of Experience</label>
-              <input
-                type="number"
-                name="years"
-                value={formData.years}
-                onChange={handleChange}
-                min="0"
-              />
-              {errors.years && <div className="error">{errors.years}</div>}
+                <label>Previous Job Experiences</label>
+                <textarea
+                  name="experiences"
+                  value={formData.experiences}
+                  onChange={handleChange}
+                  rows="3"
+                />
 
-              <div className="form-buttons">
-                <button type="button" onClick={prevStep}>
-                  Previous
-                </button>
-                <button type="button" onClick={nextStep}>
-                  Next
-                </button>
-              </div>
-            </>
-          )}
+                <label>Years of Experience</label>
+                <input
+                  type="number"
+                  name="years"
+                  value={formData.years}
+                  onChange={handleChange}
+                  min="0"
+                />
+                {errors.years && (
+                  <div className="error">{errors.years}</div>
+                )}
 
-          {/* STEP 3 */}
-          {step === 3 && (
-            <>
-              <label>Upload Certifications</label>
-              <input
-                type="file"
-                name="certifications"
-                onChange={handleChange}
-                accept=".pdf,.jpg,.png"
-                multiple
-              />
-              {errors.certifications && (
-                <div className="error">{errors.certifications}</div>
-              )}
+                <div className="form-buttons">
+                  <button type="button" onClick={prevStep}>
+                    Previous
+                  </button>
+                  <button type="button" onClick={nextStep}>
+                    Next
+                  </button>
+                </div>
+              </>
+            )}
 
-              <label>Upload CV</label>
-              <input
-                type="file"
-                name="cv"
-                onChange={handleChange}
-                accept=".pdf,.doc,.docx"
-              />
-              {errors.cv && <div className="error">{errors.cv}</div>}
+            {/* STEP 3 */}
+            {step === 3 && (
+              <>
+                <label>Upload Certifications</label>
+                <input
+                  type="file"
+                  name="certifications"
+                  onChange={handleChange}
+                  accept=".pdf,.jpg,.png"
+                  multiple
+                />
+                {errors.certifications && (
+                  <div className="error">{errors.certifications}</div>
+                )}
 
-              <div className="form-buttons">
-                <button type="button" onClick={prevStep}>
-                  Previous
-                </button>
-                <button type="submit" disabled={submitting}>
-                  {submitting ? "Submitting…" : "Submit Application"}
-                </button>
-              </div>
-            </>
-          )}
-        </form>
+                <label>Upload CV</label>
+                <input
+                  type="file"
+                  name="cv"
+                  onChange={handleChange}
+                  accept=".pdf,.doc,.docx"
+                />
+                {errors.cv && <div className="error">{errors.cv}</div>}
+
+                <div className="form-buttons">
+                  <button type="button" onClick={prevStep}>
+                    Previous
+                  </button>
+                  <button type="submit" disabled={submitting}>
+                    {submitting ? "Submitting…" : "Submit Application"}
+                  </button>
+                </div>
+              </>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

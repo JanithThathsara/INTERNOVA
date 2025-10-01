@@ -1,0 +1,34 @@
+.profile-page-container {
+ 
+   background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+}
+.profile-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #471616;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #ad91a3 100%);
+}
+
+.profile-page h2 {
+  margin-bottom: 20px;
+}
+
+.profile-page p {
+  margin: 8px 0;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e04344;
+}

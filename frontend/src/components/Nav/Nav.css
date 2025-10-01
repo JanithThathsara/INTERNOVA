@@ -48,4 +48,10 @@
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-btn:hover {
+  background-color: #8c6f82;
 }

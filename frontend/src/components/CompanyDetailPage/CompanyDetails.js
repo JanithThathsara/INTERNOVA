@@ -76,23 +76,26 @@ const CompanyDetails = () => {
           </p>
 
           <div className="button-group">
-            <button
-              className="update-btn"
-              onClick={() => navigate(`/CompanyUpdate/${id}`)}
-            >
-              Update
-            </button>
-            <button className="delete-btn" onClick={handleDelete}>
-              Delete
-            </button>
-            <button className="pdf-btn" onClick={handleDownloadPDF}>
-              Download PDF
-            </button>
-              <Link to="/application-btn">
-                        <button className="application-btn" onClick={handleDownloadPDF}>
-              Update stetus
-            </button></Link>
-          </div>
+  <button
+    className="update-btn"
+    onClick={() => navigate(`/CompanyUpdate/${id}`)}
+  >
+    Update
+  </button>
+  <button className="delete-btn" onClick={handleDelete}>
+    Delete
+  </button>
+  <button className="pdf-btn" onClick={handleDownloadPDF}>
+    Download PDF
+  </button>
+
+  <Link to="/application-btn">
+    <button className="application-btn">
+      Update stetus
+    </button>
+  </Link>
+</div>
+
         </div>
       </div>
     </>

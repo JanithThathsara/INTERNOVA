@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "../Nav/Nav";
-import "./OTPVerify.css"; // ✅ CSS import
+import "./OTPVerify.css"; //
 
 const OTPVerify = () => {
   const { userId } = useParams();

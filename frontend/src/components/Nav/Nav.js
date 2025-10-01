@@ -4,20 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem("loggedUser"));
+  const user = JSON.parse(localStorage.getItem("loggedUser")); // get logged-in company
 
   const handleProfileClick = () => {
     if (user) {
-      navigate(`/Details/${user._id}`);
+      navigate("/profile"); // go to ProfilePage
     } else {
-      navigate("/login");
+      navigate("/login"); // if not logged in, go to login
     }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("loggedUser");
-    navigate("/");
   };
 
   return (
@@ -25,13 +19,16 @@ export default function Nav() {
       <div className="nav-left">
         <h1>INTERNOVA</h1>
       </div>
+
       <div className="nav-right">
         <Link to="/">Home</Link>
         <Link to="/job-posting">Job Posting</Link>
         <Link to="/notices">Notices</Link>
         <Link to="/company-reviews">Company Reviews</Link>
-        <button className="profile-btn" onClick={handleProfileClick}>P</button>
-        {user && <button className="logout-btn" onClick={handleLogout}>Logout</button>}
+
+        <button className="profile-btn" onClick={handleProfileClick}>
+          P
+        </button>
       </div>
     </nav>
   );

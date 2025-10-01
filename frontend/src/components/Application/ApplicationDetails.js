@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ApplicationDetails.css";
+import Nav from "../Nav/Nav";   // ✅ Import Nav properly
 
 const API_ROOT = "http://localhost:5001";
 
@@ -29,7 +30,7 @@ export default function ApplicationDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Update CV or Certifications
+  // ✅ Update CV or Certifications
   const handleUpdate = async () => {
     if (!cvFile && certFiles.length === 0) {
       alert("Select CV or certifications to update.");
@@ -40,7 +41,8 @@ export default function ApplicationDetails() {
     try {
       const fd = new FormData();
       if (cvFile) fd.append("cv", cvFile);
-      if (certFiles.length) certFiles.forEach((file) => fd.append("certifications", file));
+      if (certFiles.length)
+        certFiles.forEach((file) => fd.append("certifications", file));
 
       const res = await fetch(`${API_ROOT}/api/applications/${id}/files`, {
         method: "PUT",
@@ -64,9 +66,10 @@ export default function ApplicationDetails() {
     }
   };
 
-  // Delete Application
+  // ✅ Delete Application
   const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this application?")) return;
+    if (!window.confirm("Are you sure you want to delete this application?"))
+      return;
 
     try {
       const res = await fetch(`${API_ROOT}/api/applications/${id}`, {
@@ -83,66 +86,115 @@ export default function ApplicationDetails() {
   };
 
   return (
-    <div className="application-details-container">
-      <div className="application-details-page">
-        <h2>Application Details</h2>
+    <>
+      {/* ✅ Nav bar added */}
+      <Nav />
 
-        <div className="details-section">
-          {application ? (
-            <>
-              <p><strong>Name:</strong> {application.firstName} {application.lastName}</p>
-              <p><strong>Phone:</strong> {application.phone}</p>
-              <p><strong>Email:</strong> {application.email}</p>
-              <p><strong>Date of Birth:</strong> {application.birth}</p>
-              <p><strong>Address:</strong> {application.address}</p>
-              <p><strong>City:</strong> {application.city}</p>
-              <p><strong>Gender:</strong> {application.gender}</p>
-              <p><strong>Education:</strong> {application.education}</p>
-              <p><strong>Looking For:</strong> {application.joblookingfor}</p>
-              <p><strong>Experiences:</strong> {application.experiences}</p>
-              <p><strong>Years of Experience:</strong> {application.years}</p>
-              <p>
-                <strong>CV:</strong>{" "}
-                {application.cv ? <a href={application.cv} target="_blank" rel="noreferrer">View CV</a> : "None"}
-              </p>
-              <p>
-                <strong>Certifications:</strong>{" "}
-                {application.certifications && application.certifications.length > 0 ? (
-                  application.certifications.map((file, i) => (
-                    <span key={i}>
-                      <a href={file} target="_blank" rel="noreferrer">File {i + 1}</a>{" "}
-                    </span>
-                  ))
-                ) : "None"}
-              </p>
-            </>
-          ) : (
-            <p>Loading...</p>
-          )}
-        </div>
+      <div className="application-details-container">
+        <div className="application-details-page">
+          <h2>Application Details</h2>
 
-        <div className="update-section">
-          <h3>Update CV or Certifications</h3>
+          <div className="details-section">
+            {application ? (
+              <>
+                <p>
+                  <strong>Name:</strong> {application.firstName}{" "}
+                  {application.lastName}
+                </p>
+                <p>
+                  <strong>Phone:</strong> {application.phone}
+                </p>
+                <p>
+                  <strong>Email:</strong> {application.email}
+                </p>
+                <p>
+                  <strong>Date of Birth:</strong> {application.birth}
+                </p>
+                <p>
+                  <strong>Address:</strong> {application.address}
+                </p>
+                <p>
+                  <strong>City:</strong> {application.city}
+                </p>
+                <p>
+                  <strong>Gender:</strong> {application.gender}
+                </p>
+                <p>
+                  <strong>Education:</strong> {application.education}
+                </p>
+                <p>
+                  <strong>Looking For:</strong> {application.joblookingfor}
+                </p>
+                <p>
+                  <strong>Experiences:</strong> {application.experiences}
+                </p>
+                <p>
+                  <strong>Years of Experience:</strong> {application.years}
+                </p>
+                <p>
+                  <strong>CV:</strong>{" "}
+                  {application.cv ? (
+                    <a href={application.cv} target="_blank" rel="noreferrer">
+                      View CV
+                    </a>
+                  ) : (
+                    "None"
+                  )}
+                </p>
+                <p>
+                  <strong>Certifications:</strong>{" "}
+                  {application.certifications &&
+                  application.certifications.length > 0 ? (
+                    application.certifications.map((file, i) => (
+                      <span key={i}>
+                        <a href={file} target="_blank" rel="noreferrer">
+                          File {i + 1}
+                        </a>{" "}
+                      </span>
+                    ))
+                  ) : (
+                    "None"
+                  )}
+                </p>
+              </>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
 
-          <label>Update CV</label>
-          <input type="file" onChange={(e) => setCvFile(e.target.files[0])} />
+          <div className="update-section">
+            <h3>Update CV or Certifications</h3>
 
-          <label>Update Certifications (multiple)</label>
-          <input type="file" onChange={(e) => setCertFiles(Array.from(e.target.files))} multiple />
+            <label>Update CV</label>
+            <input
+              type="file"
+              onChange={(e) => setCvFile(e.target.files[0])}
+            />
 
-          <div className="details-buttons">
-            <button onClick={handleUpdate} disabled={submitting}>
-              {submitting ? "Updating…" : "Update"}
-            </button>
-            <button className="delete-btn" onClick={handleDelete}>
-              Delete
-            </button>
-            <button className="back-btn" onClick={() => navigate("/applications")}>
-              Back to List
-            </button>
+            <label>Update Certifications (multiple)</label>
+            <input
+              type="file"
+              onChange={(e) => setCertFiles(Array.from(e.target.files))}
+              multiple
+            />
+
+            <div className="details-buttons">
+              <button onClick={handleUpdate} disabled={submitting}>
+                {submitting ? "Updating…" : "Update"}
+              </button>
+              <button className="delete-btn" onClick={handleDelete}>
+                Delete
+              </button>
+              <button
+                className="back-btn"
+                onClick={() => navigate("/applications")}
+              >
+                Back to List
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
