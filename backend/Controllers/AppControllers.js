@@ -21,7 +21,6 @@ const addApplications = async (req, res) => {
     const data = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      middle: req.body.middle || "",
       address: req.body.address,
       city: req.body.city,
       phone: req.body.phone,

@@ -8,4 +8,8 @@ router.get("/:id", UserController.getById);
 router.put("/:id", UserController.updateUser);
 router.delete("/:id", UserController.deleteUser);
 
+// Auth
+router.post("/login", UserController.loginUser);
+router.post("/verify-otp", UserController.verifyOTP); // ✅ New
+
 module.exports = router;

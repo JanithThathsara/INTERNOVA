@@ -1,5 +1,9 @@
 /* ApplicationDetails.css */
-
+.application-details-container {
+   background: linear-gradient(180deg, #ffffff 0%, #bfa4b6 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
 .application-details-page {
   max-width: 800px;
   margin: 40px auto;

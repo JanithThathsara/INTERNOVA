@@ -83,6 +83,7 @@ export default function ApplicationDetails() {
   };
 
   return (
+    <div className="application-details-container">
     <div className="application-details-page">
       <h2>Application Details</h2>
 
@@ -141,6 +142,7 @@ export default function ApplicationDetails() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
