@@ -89,11 +89,6 @@ const CompanyDetails = () => {
     Download PDF
   </button>
 
-  <Link to="/application-btn">
-    <button className="application-btn">
-      Update stetus
-    </button>
-  </Link>
 </div>
 
         </div>

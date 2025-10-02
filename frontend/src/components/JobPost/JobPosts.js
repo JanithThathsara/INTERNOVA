@@ -171,6 +171,25 @@ function JobPosts() {
 
       <footer className="jobposts-footer">
         <AddJobPost onJobAdded={handleJobAdded} />
+        {/* View Applications button */}
+    <Link to="/applications">
+      <button
+        style={{
+          padding: "12px 24px",
+          marginTop: "10px",
+          background: "linear-gradient(135deg, #1e3c72, #2a5298)", 
+          color: "#fff",
+          border: "none",
+          borderRadius: "12px",
+          fontWeight: "600",
+          cursor: "pointer",
+          boxShadow: "0 6px 20px rgba(30,60,114,0.4)",
+          transition: "all 0.3s ease"
+        }}
+      >
+        📄 View Applications
+      </button>
+    </Link>
         <p>&copy; 2025 CareerLaunch. All rights reserved.</p>
       </footer>
     </div>
