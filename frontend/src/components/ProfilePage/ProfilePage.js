@@ -14,7 +14,7 @@ const ProfilePage = () => {
 
   if (!user) {
     return (
-      <div>
+      <div className="profile-page-container">
         <Nav />
         <h2>No logged-in company found. Please login.</h2>
       </div>
@@ -22,9 +22,16 @@ const ProfilePage = () => {
   }
 
   return (
-    <div class Name="profile-page-container">
+    <div className="profile-page-container">
       <Nav />
       <div className="profile-page">
+        {/* Profile Icon */}
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          alt="Profile Icon"
+          className="profile-icon"
+        />
+
         <h2>Company Profile</h2>
         <p><strong>Name:</strong> {user.companyName}</p>
         <p><strong>Email:</strong> {user.companyEmail}</p>
