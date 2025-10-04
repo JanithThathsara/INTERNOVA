@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./JobPosts.css";
 import AddJobPost from "./AddJobPost";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Nav from '../Nav/Nav';
+import { useNavigate, Link } from "react-router-dom";
+import Nav from "../Nav/Nav";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable"; // <-- fixed import
-import { Link } from "react-router-dom";
+import autoTable from "jspdf-autotable";
 
 function JobPosts() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(""); // ✅ NEW state for search
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,12 +48,10 @@ function JobPosts() {
     navigate(`/update-job/${id}`);
   };
 
-  // Download Excel
   const handleDownloadExcel = () => {
     if (jobs.length === 0) return;
-
     const worksheet = XLSX.utils.json_to_sheet(
-      jobs.map(job => ({
+      jobs.map((job) => ({
         "Company Name": job.Cname,
         "Job Title": job.jobtitle,
         Description: job.Cdescription,
@@ -62,23 +60,18 @@ function JobPosts() {
         Experience: job.experience,
       }))
     );
-
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Jobs");
     XLSX.writeFile(workbook, "job_posts.xlsx");
   };
 
-  // Download PDF
   const handleDownloadPDF = () => {
     if (jobs.length === 0) return;
-
     const doc = new jsPDF();
     doc.text("Job Posts", 14, 16);
-
     const tableColumn = ["Company Name", "Job Title", "Description", "Location", "Salary", "Experience"];
     const tableRows = [];
-
-    jobs.forEach(job => {
+    jobs.forEach((job) => {
       const jobData = [
         job.Cname,
         job.jobtitle,
@@ -89,15 +82,18 @@ function JobPosts() {
       ];
       tableRows.push(jobData);
     });
-
-    autoTable(doc, {   // <-- call autoTable directly
-      head: [tableColumn],
-      body: tableRows,
-      startY: 20,
-    });
-
+    autoTable(doc, { head: [tableColumn], body: tableRows, startY: 20 });
     doc.save("job_posts.pdf");
   };
+
+  // ✅ Filter jobs by search term
+  const filteredJobs = jobs.filter((job) => {
+    const search = searchTerm.toLowerCase();
+    return (
+      job.Cname.toLowerCase().includes(search) ||
+      job.jobtitle.toLowerCase().includes(search)
+    );
+  });
 
   if (loading) return <p>Loading...</p>;
 
@@ -106,11 +102,23 @@ function JobPosts() {
       <div className="nav-div">
         <Nav />
       </div>
+
+      {/* ✅ Search Bar */}
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Search by Company Name or Job Title..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
+      </div>
+
       <div className="job-cards-container">
-        {jobs.length === 0 ? (
+        {filteredJobs.length === 0 ? (
           <p>No jobs found.</p>
         ) : (
-          jobs.map((job) => (
+          filteredJobs.map((job) => (
             <div key={job._id} className="job-card">
               <div className="job-header">
                 <img src={job.Cpropic} alt="Company Logo" className="company-logo" />
@@ -126,7 +134,7 @@ function JobPosts() {
                 <p>🕑 {job.experience}</p>
               </div>
               <Link to="/apply">
-              <button className="apply-btn">Apply Now</button>
+                <button className="apply-btn">Apply Now</button>
               </Link>
               <div className="job-actions">
                 <button onClick={() => handleUpdate(job._id)}>✏️ Update</button>
@@ -138,58 +146,16 @@ function JobPosts() {
       </div>
 
       {/* Download Buttons */}
-      <div style={{ position: "fixed", bottom: "20px", right: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
-        <button
-          onClick={handleDownloadExcel}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#28a745",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            boxShadow: "0 4px 6px rgba(0,0,0,0.2)"
-          }}
-        >
-          ⬇️ Download Excel
-        </button>
-        <button
-          onClick={handleDownloadPDF}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            boxShadow: "0 4px 6px rgba(0,0,0,0.2)"
-          }}
-        >
-          ⬇️ Download PDF
-        </button>
+      <div className="download-buttons">
+        <button onClick={handleDownloadExcel}>⬇️ Download Excel</button>
+        <button onClick={handleDownloadPDF}>⬇️ Download PDF</button>
       </div>
 
       <footer className="jobposts-footer">
         <AddJobPost onJobAdded={handleJobAdded} />
-        {/* View Applications button */}
-    <Link to="/applications">
-      <button
-        style={{
-          padding: "12px 24px",
-          marginTop: "10px",
-          background: "linear-gradient(135deg, #1e3c72, #2a5298)", 
-          color: "#fff",
-          border: "none",
-          borderRadius: "12px",
-          fontWeight: "600",
-          cursor: "pointer",
-          boxShadow: "0 6px 20px rgba(30,60,114,0.4)",
-          transition: "all 0.3s ease"
-        }}
-      >
-        📄 View Applications
-      </button>
-    </Link>
+        <Link to="/applications">
+          <button className="view-applications-btn">📄 View Applications</button>
+        </Link>
         <p>&copy; 2025 CareerLaunch. All rights reserved.</p>
       </footer>
     </div>

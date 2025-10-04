@@ -19,7 +19,6 @@ const addReview = async (req, res) => {
     const companyId = req.params.companyId;
     const { authorName, authorId, rating, text } = req.body;
 
-    // Basic validation
     const company = await User.findById(companyId);
     if (!company) return res.status(404).json({ message: "Company not found" });
 
@@ -39,8 +38,7 @@ const addReview = async (req, res) => {
   }
 };
 
-// Toggle like/unlike for a review
-// Expects in body: { userId: "<some id or identifier>" }
+// Toggle like/unlike for a review (existing)
 const toggleLikeReview = async (req, res) => {
   try {
     const reviewId = req.params.id;
@@ -52,11 +50,9 @@ const toggleLikeReview = async (req, res) => {
 
     const idx = review.likedBy.indexOf(userId);
     if (idx === -1) {
-      // like
       review.likedBy.push(userId);
       review.likes = (review.likes || 0) + 1;
     } else {
-      // unlike
       review.likedBy.splice(idx, 1);
       review.likes = Math.max((review.likes || 1) - 1, 0);
     }
@@ -69,10 +65,39 @@ const toggleLikeReview = async (req, res) => {
   }
 };
 
+// ✅ Toggle like/unlike for a company
+const toggleLikeCompany = async (req, res) => {
+  try {
+    const companyId = req.params.companyId;
+    const { userId } = req.body;
+    if (!userId) return res.status(400).json({ message: "userId required" });
+
+    const company = await User.findById(companyId);
+    if (!company) return res.status(404).json({ message: "Company not found" });
+
+    // initialize if not exist
+    if (!company.likedBy) company.likedBy = [];
+    if (!company.likes) company.likes = 0;
+
+    if (!company.likedBy.includes(userId)) {
+      company.likedBy.push(userId);
+      company.likes += 1;
+    } else {
+      company.likedBy = company.likedBy.filter((id) => id !== userId);
+      company.likes = Math.max(company.likes - 1, 0);
+    }
+
+    await company.save();
+    return res.status(200).json({ likes: company.likes, likedBy: company.likedBy });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
 // Get companies with aggregated stats: reviewCount and totalLikes (per company)
 const getCompaniesWithStats = async (req, res) => {
   try {
-    // Aggregation: group reviews by company
     const agg = await Review.aggregate([
       {
         $group: {
@@ -84,7 +109,6 @@ const getCompaniesWithStats = async (req, res) => {
       },
     ]);
 
-    // Convert to map for quick lookup
     const statsMap = {};
     agg.forEach((a) => {
       statsMap[a._id.toString()] = {
@@ -94,16 +118,14 @@ const getCompaniesWithStats = async (req, res) => {
       };
     });
 
-    // Get companies
     const companies = await User.find().sort({ createdAt: -1 }).lean();
 
-    // Attach stats
     const results = companies.map((c) => {
       const s = statsMap[c._id.toString()] || { reviewCount: 0, totalLikes: 0, avgRating: null };
       return {
         ...c,
         reviewCount: s.reviewCount,
-        totalLikes: s.totalLikes,
+        totalLikes: s.totalLikes + (c.likes || 0), // include company likes
         avgRating: s.avgRating,
       };
     });
@@ -119,6 +141,6 @@ module.exports = {
   getReviewsByCompany,
   addReview,
   toggleLikeReview,
+  toggleLikeCompany, // ✅ added
   getCompaniesWithStats,
 };
-// ReviewControllers.js

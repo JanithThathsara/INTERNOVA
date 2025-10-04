@@ -11,7 +11,10 @@ router.get("/:companyId", ReviewController.getReviewsByCompany);
 // add review
 router.post("/:companyId", ReviewController.addReview);
 
-// toggle like
+// toggle like for individual review
 router.post("/like/:id", ReviewController.toggleLikeReview);
+
+// ✅ toggle like for company
+router.post("/company-like/:companyId", ReviewController.toggleLikeCompany);
 
 module.exports = router;
