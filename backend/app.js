@@ -9,6 +9,9 @@ const jobRouter = require("./Routes/JobRoutes");
 const userRouter = require("./Routes/UserRoute");
 const reviewRoutes = require("./Routes/ReviewRoutes");
 const applicationRouter = require("./Routes/AppRoutes"); // applications CRUD
+const noticeRoutes = require("./Routes/noticeRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 const app = express();
 
@@ -26,6 +29,9 @@ app.use("/jobs", jobRouter);                     // Job CRUD
 app.use("/users", userRouter); 
 app.use("/reviews", reviewRoutes);                 // Company/User CRUD
 app.use("/api/applications", applicationRouter); // Applications CRUD
+app.use("/api/notices", noticeRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 // Serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

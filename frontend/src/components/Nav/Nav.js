@@ -23,7 +23,7 @@ export default function Nav() {
       <div className="nav-right">
         <Link to="/">Home</Link>
         <Link to="/job-posting">Job Posting</Link>
-        <Link to="/notices">Notices</Link>
+        <Link to="/notices-dashboard">Notices</Link>
         <Link to="/company-reviews">Company Reviews</Link>
 
         <button className="profile-btn" onClick={handleProfileClick}>

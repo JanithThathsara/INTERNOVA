@@ -28,6 +28,7 @@ import ApplicationDetails from "./components/Application/ApplicationDetails";
 
 //reviews page import
 import CompanyReviews from "./components/CompanyReviews/CompanyReviews";
+import Notice from "./Notice";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/notices-dashboard/*" element={<Notice />} />
 
         {/* Job Routes */}
         <Route path="/job-posting" element={<JobPosts />} />
@@ -47,23 +49,23 @@ function App() {
         <Route path="/Details/:id" element={<CompanyDetailsPage />} />
         <Route path="/CompanyUpdate/:id" element={<CompanyUpdatePage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        
+
         {/* Application Routes */}
         <Route path="/newApplication" element={<JobApplication />} />
         <Route path="/applications" element={<ApplicationList />} />
         <Route path="/applications/:id" element={<ApplicationDetails />} />
         <Route path="/apply" element={<JobApplication />} />
         <Route path="/application-btn" element={<ApplicationDetails />} />
-        
+
 
         {/*reviews page route*/}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 
         {/* Auth Route */}
-        <Route path="/login" element={<CompanyLogin />} /> 
+        <Route path="/login" element={<CompanyLogin />} />
         <Route path="/verify-otp/:userId" element={<OTPVerify />} />
 
-       
+
       </Routes>
     </div>
   );
