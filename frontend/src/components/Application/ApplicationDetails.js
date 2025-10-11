@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ApplicationDetails.css";
-import Nav from "../Nav/Nav";   // ✅ Import Nav properly
+import Nav from "../Nav/Nav";
 
 const API_ROOT = "http://localhost:5001";
 
@@ -13,6 +13,7 @@ export default function ApplicationDetails() {
   const [cvFile, setCvFile] = useState(null);
   const [certFiles, setCertFiles] = useState([]);
   const [submitting, setSubmitting] = useState(false);
+  const [showInterviewPopup, setShowInterviewPopup] = useState(false); // ✅ Popup state
 
   const fetchApplication = async () => {
     try {
@@ -87,7 +88,6 @@ export default function ApplicationDetails() {
 
   return (
     <>
-      {/* ✅ Nav bar added */}
       <Nav />
 
       <div className="application-details-container">
@@ -156,6 +156,16 @@ export default function ApplicationDetails() {
                     "None"
                   )}
                 </p>
+
+                {/* ✅ View Interview Button */}
+                {application.interviewDate && (
+                  <button
+                    className="view-interview-btn"
+                    onClick={() => setShowInterviewPopup(true)}
+                  >
+                    View Interview Details
+                  </button>
+                )}
               </>
             ) : (
               <p>Loading...</p>
@@ -195,6 +205,57 @@ export default function ApplicationDetails() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Interview Popup Modal */}
+     {showInterviewPopup && (
+  <div className="interview-popup">
+    <div className="popup-card">
+      <div className="popup-header">
+        <h3>📅 Interview Schedule</h3>
+        <button
+          className="popup-close"
+          onClick={() => setShowInterviewPopup(false)}
+        >
+        
+        </button>
+      </div>
+
+      <div className="popup-body">
+        <div className="popup-row">
+          <span className="popup-label">Date:</span>
+          <span className="popup-value">{application.interviewDate}</span>
+        </div>
+
+        <div className="popup-row">
+          <span className="popup-label">Time:</span>
+          <span className="popup-value">{application.interviewTime}</span>
+        </div>
+
+        <div className="popup-row">
+          <span className="popup-label">Meet Link:</span>
+          <a
+            className="popup-link"
+            href={application.interviewLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {application.interviewLink}
+          </a>
+        </div>
+      </div>
+
+      <div className="popup-footer">
+        <button
+          className="popup-close-btn"
+          onClick={() => setShowInterviewPopup(false)}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 }
