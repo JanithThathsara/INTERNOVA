@@ -1,11 +1,11 @@
 import React from "react";
-import Nav from "../Nav/Nav";   // ✅ Import Nav component
+import Nav from "../Nav/Nav";  
 import ApplicationList from "./ApplicationList";
 
 const ApplicationListPage = () => {
   return (
     <>
-      {/* ✅ Nav Bar */}
+      {/*  Nav Bar */}
       <Nav />
 
       <div style={{ padding: "20px" }}>

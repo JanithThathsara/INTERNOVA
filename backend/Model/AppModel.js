@@ -16,8 +16,13 @@ const appSchema = new Schema(
     joblookingfor: { type: String, default: "" },
     experiences: { type: String, default: "" },
     years: { type: Number, default: 0 },
-    cv: { type: String, default: null }, // filename stored
-    certifications: [{ type: String }], // array of filenames
+    cv: { type: String, default: null },
+    certifications: [{ type: String }],
+
+    // 🔹 Auto Interview Scheduling Fields
+    interviewDate: { type: String, default: null },
+    interviewTime: { type: String, default: null },
+    interviewLink: { type: String, default: null },
   },
   { timestamps: true }
 );

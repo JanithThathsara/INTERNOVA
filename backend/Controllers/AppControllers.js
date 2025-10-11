@@ -1,5 +1,6 @@
 // Controllers/AppControllers.js
 const Application = require("../Model/AppModel");
+const nodemailer = require("nodemailer"); 
 
 /**
  * GET /api/applications
@@ -14,44 +15,57 @@ const getAllApplications = async (req, res) => {
   }
 };
 
-// POST /api/applications   (create)
+/**
+ * POST /api/applications
+ */
 const addApplications = async (req, res) => {
   try {
+    const { body, files } = req;
 
-    const data = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      address: req.body.address,
-      city: req.body.city,
-      phone: req.body.phone,
-      email: req.body.email,
-      birth: req.body.birth,
-      gender: req.body.gender || "",
-      education: req.body.education || "",
-      joblookingfor: req.body. joblookingfor || "",
-      experiences: req.body.experiences || "",
-      years: req.body.years ? Number(req.body.years) : 0,
-    };
+    // File Handling
+    const cvFile = files?.cv ? files.cv[0].filename : null;
+    const certificationFiles = files?.certifications
+      ? files.certifications.map((file) => file.filename)
+      : [];
 
-    // files (if uploaded)
-    if (req.files && req.files.cv && req.files.cv.length > 0) {
-      data.cv = req.files.cv[0].filename;
-    }
-    if (req.files && req.files.certifications && req.files.certifications.length > 0) {
-      data.certifications = req.files.certifications.map((f) => f.filename);
-    }
+    // Random Interview Scheduler
+    const today = new Date();
+    const randomDays = Math.floor(Math.random() * 5) + 1; // 1–5 days later
+    const interviewDateObj = new Date(today);
+    interviewDateObj.setDate(today.getDate() + randomDays);
 
-    const application = new Application(data);
-    await application.save();
-    return res.status(201).json(application);
-  } catch (err) {
-    console.error("addApplications error:", err);
-    return res.status(500).json({ message: "Failed to add application" });
+    const randomHour = 9 + Math.floor(Math.random() * 8); // 9 AM - 4 PM
+    const randomMinute = ["00", "15", "30", "45"][Math.floor(Math.random() * 4)];
+    const interviewTime = `${String(randomHour).padStart(2, "0")}:${randomMinute}`;
+
+    const randomString = Math.random().toString(36).substring(2, 8);
+    const interviewLink = `https://meet.google.com/${randomString}`;
+
+    // Create new Application
+    const newApplication = new Application({
+      ...body,
+      cv: cvFile,
+      certifications: certificationFiles,
+      interviewDate: interviewDateObj.toISOString().split("T")[0],
+      interviewTime,
+      interviewLink,
+    });
+
+    await newApplication.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Application submitted successfully with interview scheduled!",
+      data: newApplication,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
 };
 
-//GET /api/applications/:id  (read )
- 
+/**
+ * GET /api/applications/:id
+ */
 const getById = async (req, res) => {
   const id = req.params.id;
   try {
@@ -64,8 +78,9 @@ const getById = async (req, res) => {
   }
 };
 
-// PUT /api/applications/:id (update)
- 
+/**
+ * PUT /api/applications/:id
+ */
 const updateApplication = async (req, res) => {
   const id = req.params.id;
   const {
@@ -111,8 +126,9 @@ const updateApplication = async (req, res) => {
   }
 };
 
-//DELETE /api/applications/:id  (delete )
-
+/**
+ * DELETE /api/applications/:id
+ */
 const deleteApplication = async (req, res) => {
   const id = req.params.id;
   try {
@@ -125,6 +141,7 @@ const deleteApplication = async (req, res) => {
   }
 };
 
+// Export all controllers in one clean object
 module.exports = {
   getAllApplications,
   addApplications,

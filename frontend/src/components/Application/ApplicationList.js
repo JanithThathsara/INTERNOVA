@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "./ApplicationList.css";
-import Nav from "../Nav/Nav";   // ✅ Import Nav properly
+import Nav from "../Nav/Nav";   
 
 const API_ROOT = "http://localhost:5001";
 
@@ -64,7 +64,7 @@ export default function ApplicationList() {
 
   return (
     <>
-      {/* ✅ Nav bar */}
+      {/*  Nav bar */}
       <Nav />
 
       <div className="list-page">

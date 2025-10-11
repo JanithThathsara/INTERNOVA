@@ -13,7 +13,7 @@ export default function ApplicationDetails() {
   const [cvFile, setCvFile] = useState(null);
   const [certFiles, setCertFiles] = useState([]);
   const [submitting, setSubmitting] = useState(false);
-  const [showInterviewPopup, setShowInterviewPopup] = useState(false); // ✅ Popup state
+  const [showInterviewPopup, setShowInterviewPopup] = useState(false); 
 
   const fetchApplication = async () => {
     try {
@@ -31,7 +31,7 @@ export default function ApplicationDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ✅ Update CV or Certifications
+  //  Update CV or Certifications
   const handleUpdate = async () => {
     if (!cvFile && certFiles.length === 0) {
       alert("Select CV or certifications to update.");
@@ -67,7 +67,7 @@ export default function ApplicationDetails() {
     }
   };
 
-  // ✅ Delete Application
+  //  Delete Application
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this application?"))
       return;
@@ -157,7 +157,7 @@ export default function ApplicationDetails() {
                   )}
                 </p>
 
-                {/* ✅ View Interview Button */}
+                {/*  View Interview Button */}
                 {application.interviewDate && (
                   <button
                     className="view-interview-btn"
@@ -206,7 +206,7 @@ export default function ApplicationDetails() {
         </div>
       </div>
 
-      {/* ✅ Interview Popup Modal */}
+      {/*  Interview Popup Modal */}
      {showInterviewPopup && (
   <div className="interview-popup">
     <div className="popup-card">

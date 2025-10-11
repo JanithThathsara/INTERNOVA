@@ -1,4 +1,4 @@
-/* 🌸 MAIN PAGE CONTAINER */
+/*  MAIN PAGE CONTAINER */
 .application-details-container {
   background: linear-gradient(135deg, #ffffff, #cfb6dc);
   min-height: 100vh;
@@ -15,7 +15,7 @@
   100% { background-position: 100% 50%; }
 }
 
-/* 🌟 MAIN CARD CONTAINER */
+/*  MAIN CARD CONTAINER */
 .application-details-page {
   width: 100%;
   max-width: 950px;
@@ -33,7 +33,7 @@
   box-shadow: 0 10px 40px rgba(90, 45, 92, 0.3);
 }
 
-/* 🏷️ TITLE */
+/*  TITLE */
 .application-details-page h2 {
   text-align: center;
   margin-bottom: 45px;
@@ -60,7 +60,7 @@
   50% { opacity: 1; width: 130px; }
 }
 
-/* 🗂️ DETAILS SECTION */
+/*  DETAILS SECTION */
 .details-section {
   background: linear-gradient(135deg, #f7e3ff, #ae87dc);
   padding: 30px;
@@ -95,7 +95,7 @@
   text-decoration: underline;
 }
 
-/* ⚙️ UPDATE SECTION */
+/*  UPDATE SECTION */
 .update-section {
   background: linear-gradient(135deg, #ae87dc, #efe3f5);
   padding: 30px;
@@ -122,7 +122,7 @@
   margin-bottom: 8px;
 }
 
-/* 🧭 BUTTON GROUP */
+/*  BUTTON GROUP */
 .details-buttons {
   display: flex;
   justify-content: center;
@@ -280,6 +280,7 @@
   background: #fff;
   box-shadow: 0 0 6px rgba(90, 45, 92, 0.2);
   transition: background 0.3s ease;
+  
 }
 
 .popup-row:hover {

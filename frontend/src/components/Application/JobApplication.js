@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JobApplication.css";
-import Nav from "../Nav/Nav"; // ✅ Import your Nav component
+import Nav from "../Nav/Nav"; 
 
 const API_ROOT = "http://localhost:5001";
 
@@ -163,7 +163,7 @@ export default function JobApplication() {
 
   return (
     <>
-      {/* ✅ Nav bar added here */}
+      {/*  Nav bar added here */}
       <Nav />
 
       <div className="jobapp-page">
