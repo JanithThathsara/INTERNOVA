@@ -54,7 +54,7 @@ export default function Home() {
             <p>Select how you want to continue:</p>
             <div className="popup-buttons">
             <Link to="/CompanyRegister" > <button onClick={() => handleChoice('/company')}>Company</button></Link>
-              <button onClick={() => handleChoice('/employer')}>Employer</button>
+             <Link to="/EmployerRegister" > <button onClick={() => handleChoice('/employer')}>Employer</button></Link>
             </div>
             <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
           </div>

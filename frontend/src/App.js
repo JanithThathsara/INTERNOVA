@@ -1,42 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-// Home
+// Components
 import Home from "./components/Home/Home";
-
-// Job CRUD
 import JobPosts from "./components/JobPost/JobPosts";
 import AddJobPost from "./components/JobPost/AddJobPost";
 import UpdateJob from "./components/JobPost/UpdateJob";
 
-// Company CRUD
 import CompanyRegisterPage from "./components/CompanyhomePage/CompanyHome";
 import CompanyDetailsPage from "./components/CompanyDetailPage/CompanyDetails";
 import CompanyUpdatePage from "./components/CompanyUpdatePage/CompanyUpdate";
 import CompanyLogin from "./components/CompanyLogin/CompanyLogin";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 
-// OTP Verify
 import OTPVerify from "./components/OTPVerify/OTPVerify";
 
-
-// Applications
 import JobApplication from "./components/Application/JobApplication";
 import ApplicationList from "./components/Application/ApplicationList";
 import ApplicationDetails from "./components/Application/ApplicationDetails";
 
-//reviews page import
 import CompanyReviews from "./components/CompanyReviews/CompanyReviews";
 import Notice from "./Notice";
 
+// Member Login Component
+import Login from "./Login";
 
-function App() {
+const App = () => {
+  const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState({ name: "", email: "" });
+
   return (
     <div>
+      <ToastContainer />
       <Routes>
+        {/* Default Home page */}
         <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
+
+        {/* Member login */}
+        <Route path="/EmployerRegister" element={<Login setToken={setToken} setUserInfo={setUserInfo} />} />
+
+        {/* Notices */}
         <Route path="/notices-dashboard/*" element={<Notice />} />
 
         {/* Job Routes */}
@@ -57,18 +63,14 @@ function App() {
         <Route path="/apply" element={<JobApplication />} />
         <Route path="/application-btn" element={<ApplicationDetails />} />
 
-
-        {/*reviews page route*/}
+        {/* Reviews */}
         <Route path="/company-reviews" element={<CompanyReviews />} />
 
-        {/* Auth Route */}
-        <Route path="/login" element={<CompanyLogin />} />
+        {/* Auth / OTP */}
         <Route path="/verify-otp/:userId" element={<OTPVerify />} />
-
-
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
